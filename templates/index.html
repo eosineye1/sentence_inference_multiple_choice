@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title> Sentence Inference Multiple Choice </title>
+
+    <link rel="stylesheet" href="../static/css/app.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+</head>
+
+<script src="../static/js/index.js"></script>
+
+<body>
+    <h2> Sentence Inference Multiple Choice </h2>
+    <div class="">
+        <div class="row">
+            <div class="col-sm-1"></div>
+
+            <div class="col-sm-10">
+                <center>
+                    <h4>model: bert-base-uncased_SWAG</h4>
+                    <br>
+                </center>
+                <div class="overlay">
+                    <div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>
+                </div>
+                <br>
+                <h4> Main Sentence </h4>
+                <textarea class="form-control txt_input"
+                    id="context" onkeyup="context_changed(this.value);">One hand in his pocket, someone strolls toward the dining room where two stewards stand outside its doors. Inside, someone</textarea>
+                
+                <label id="word_count">words: </label>
+                
+                <br>
+                <br>
+                <h4> Parameter </h4>
+                <h6> #Inference Sentences <input type="button" value="add" onclick="add_textbox()" style="color: white; margin-left: 1%; background: #007bff; border-radius: 5px; border: none; height: 25px"></h6>
+                <div id="box">
+                    <p>
+                        <input type='text' class='item form-control' style='width: 92%; display: inline;' onkeyup='text_changed()' value="brings up a syringe."> <input type='button' value='delete' onclick='remove(this)' style='width: 6%; margin-left: 1% ;color: white; background: #007bff; border-radius: 5px; border: none; height: 35px'>
+                    </p>
+                    <p>
+                        <input type='text' class='item form-control' style='width: 92%; display: inline;' onkeyup='text_changed()' value="hangs his coat as he fidgets around then leans a case on his leg and rubs his shoulder."> <input type='button' value='delete' onclick='remove(this)' style='width: 6%; margin-left: 1% ;color: white; background: #007bff; border-radius: 5px; border: none; height: 35px'>
+                    </p>
+                    <p>
+                        <input type='text' class='item form-control' style='width: 92%; display: inline;' onkeyup='text_changed()' value="pulls a clipboard past a hanging panel a few inches along the bottom of a winding hallway."> <input type='button' value='delete' onclick='remove(this)' style='width: 6%; margin-left: 1% ;color: white; background: #007bff; border-radius: 5px; border: none; height: 35px'>
+                    </p>
+                    <p>
+                        <input type='text' class='item form-control' style='width: 92%; display: inline;' onkeyup='text_changed()' value="steps toward the door."> <input type='button' value='delete' onclick='remove(this)' style='width: 6%; margin-left: 1% ;color: white; background: #007bff; border-radius: 5px; border: none; height: 35px'>
+                    </p>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6" style="margin-left: 25%">
+                        <label></label>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-submit" onclick="send_req();">Find the most appropriate sentence.</button>
+                    </div>
+                </div>
+                <h4> Result </h4>
+                <textarea class="form-control txt_result" id="result" readonly> </textarea>
+                <label>Timer:&nbsp;</label><label id="timer">0.0</label><br>
+                <b><label id="warning" style="color:red;"></label></b>
+                <div class="empty_space"></div>
+            </div> 
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    context_changed( document.getElementById("context").value);
+</script>
+
+</html>
